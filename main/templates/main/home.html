@@ -1,0 +1,82 @@
+<!--&lt;!&ndash; main/templates/main/home.html &ndash;&gt;-->
+{% extends "main/base.html" %}
+
+{% block title %}Главная{% endblock %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var chatSocket = new WebSocket(
+                'ws://' + window.location.host + '/ws/chat/'
+            );
+
+            chatSocket.onmessage = function(e) {
+                var data = JSON.parse(e.data);
+                var message = data['message'];
+                document.querySelector('#response').innerHTML += '<p>' + message + '</p>';
+            };
+
+            chatSocket.onclose = function(e) {
+                console.error('Chat socket closed unexpectedly');
+            };
+
+            document.querySelector('#chatForm').onsubmit = function(e) {
+                e.preventDefault();
+                var question = document.querySelector('#id_question').value;
+                chatSocket.send(JSON.stringify({
+                    'question': question
+                }));
+            };
+        });
+    </script>
+
+{% block content %}
+
+<h1>Сайт портфолии beckend разработчика</h1>
+<h2>Вот несколько примеров моих работ:</h2>
+<!--<div id="chat-gpt">-->
+
+<!--    <h2>Задай вопрос чату GPT-2</h2>-->
+<!--    <form id="chatForm" method="post" action="{% url 'ask_gpt' %}">-->
+<!--        {% csrf_token %}-->
+<!--        {{ chat_form.as_p }}-->
+<!--        <button type="submit">Отправить</button>-->
+<!--    </form>-->
+<!--    {% if response %}-->
+<!--    <div id="response">{{ response }}</div>-->
+<!--    {% endif %}-->
+<!--</div>-->
+
+<div id="chat-gpt">
+        <h2>Задай вопрос чату GPT-2</h2>
+        <form id="chatForm">
+            {% csrf_token %}
+            {{ chat_form.as_p }}
+            <button type="submit">Отправить</button>
+        </form>
+        <div id="response"></div>
+    </div>
+
+
+<div id="contact-form">
+
+    <h2>Введите сюда ваш контакт Telegram и я выйду с Вами на связь в течении 30 секунд</h2>
+    <form id="contactForm" method="post" action="{% url 'send_contact' %}">
+        {% csrf_token %}
+        {{ contact_form.as_p }}
+        <button type="submit" onclick="startCountdown(event)">Отправить</button>
+    </form>
+    <div id="countdown"></div>
+
+</div>
+<div id="user-info">
+    <h2>Это портфолио и вот информация обо мне</h2>
+    <p>Мой опыт это соблюдение стандартов PEP8 и глубокое знание PostgreSQL для эффективного управления данными. Я знаком с классическими алгоритмами, паттернами проектирования и структурами данных, что позволяет мне разрабатывать эффективные и масштабируемые решения. Владею Django, DRF, Celery и FastAPI для разработки высокопроизводительных веб-сервисов и API. Имею опыт интеграции с Telegram Bot API, обеспечивая функциональность и надежность. Занимался работой с Redis для управления кэшем и очередями. Использовал ElasticSearch для эффективного поиска и анализа данных. Понимаю принципы микросервисной архитектуры и умею разрабатывать и интегрировать микросервисы. Активно практикую написание юнит-тестов для обеспечения качества кода и стабильной работы приложений. Опытный пользователь GIT, использующий его для контроля версий и совместной работы. Также умею создавать сайты и работать с Docker и Docker Compose. Этот бесплатный хостинг не дает полностью реализовать все мои умения, но может дать представление о моих скиллах, включая бэк и фронт.</p>
+</div>
+
+
+{% endblock %}
+<footer></footer>
+{% block footer %}
+        <p>© Создано в 2024. Все права в открытом доступе. <a href="https://github.com/zhdaniukivan">Мой GitHub</a></p>
+{% endblock %}
+</footer>
+

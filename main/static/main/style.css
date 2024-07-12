@@ -1,0 +1,90 @@
+/* main/static/main/style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+#chat-gpt, #contact-form, #user-info {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: #333;
+}
+
+button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #ccc;
+}
+
+input[type="text"] {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="text"]::placeholder {
+    color: #ccc;
+}
+
+#loading {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px; /* Высота футера */
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+}

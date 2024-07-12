@@ -1,0 +1,23 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}Контакты{% endblock %}
+
+{% block content %}
+<div id="contact-info">
+    <h2>Мои контактные данные:</h2>
+    <p>Телефон: +375292819815</p>
+    <p>Email: Zhdaniuk.python.dev@gmail.com</p>
+    <p>Telegram: @Ivan1988Zhdaniuk</p>
+    <a href="{% static 'main/pdf/resume.pdf' %}" download>
+        <button type="button">Скачать резюме в PDF</button>
+    </a>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer class="footer">
+        <p>© Создано в 2024. Все права в открытом доступе. <a href="https://github.com/zhdaniukivan">Мой GitHub</a></p>
+</footer>
+{% endblock %}
+
