@@ -135,6 +135,4 @@ CHANNEL_LAYERS = {
     },
 }
 
-# STATICFILES_DIRS = [
-#     BASE_DIR / "static",
-# ]
+

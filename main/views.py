@@ -28,7 +28,6 @@ def ask_gpt(request):
 
             openai_service = OpenAIService()
             model = "gpt-3.5-turbo"
-            question_message = 'что делает git checkout'
             messages = [{"role": "user", "content": f'{question}, отвечай пожалуйста на русcком языке'}]
             response = openai_service.get_chat_answer(model, messages)
             # response = 'it is temporary txt'
