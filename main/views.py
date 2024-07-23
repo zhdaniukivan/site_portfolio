@@ -30,7 +30,7 @@ def ask_gpt(request):
             model = "gpt-3.5-turbo"
             messages = [{"role": "user", "content": f'{question}, отвечай пожалуйста на русcком языке'}]
             response = openai_service.get_chat_answer(model, messages)
-            # response = 'it is temporary txt'
+            print(response)
 
             return render(request, 'main/home.html', {'response': response, 'form': form})
     return render(request, 'main/home.html', {'form': ChatGPTForms()})
