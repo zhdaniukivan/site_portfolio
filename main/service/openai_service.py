@@ -29,3 +29,8 @@ class OpenAIService:
 
 
 # res = OpenAIService.get_chat_answer(model, messages)
+
+
+
+
+
